@@ -189,15 +189,15 @@ def prepare(model, inplace=False, allow_list=None,
         inplace: carry out model transformations in-place, the original module is mutated
         allow_list: list of quantizable modules
         observer_non_leaf_module_list: list of non-leaf modules we want to add observer
-        `prepare_custom_config_dict`: customization configuration dictionary for prepare function:
-        # user will manually define the corresponding observed
-        # module class which has a from_float class method that converts
-        # float custom module to observed custom module
-        prepare_custom_config_dict = {
-          "float_to_observed_custom_module_class": {
-             CustomModule: ObservedCustomModule
-           }
-        }
+        prepare_custom_config_dict: customization configuration dictionary for prepare function:
+                                    user will manually define the corresponding observed
+                                    module class which has a from_float class method that converts
+                                    float custom module to observed custom module
+                                    prepare_custom_config_dict = {
+                                      "float_to_observed_custom_module_class": {
+                                         CustomModule: ObservedCustomModule
+                                       }
+                                    }
     """
     torch._C._log_api_usage_once("quantization_api.quantize.prepare")
     if prepare_custom_config_dict is None:
@@ -404,15 +404,15 @@ def convert(
                  Modules
         inplace: carry out model transformations in-place, the original module
                  is mutated
-        `convert_custom_config_dict`: custom configuration dictionary for convert function:
-        convert_custom_config_dict = {
-          # user will manually define the corresponding quantized
-          # module class which has a from_observed class method that converts
-          # observed custom module to quantized custom module
-          "observed_to_quantized_custom_module_class": {
-             ObservedCustomModule: QuantizedCustomModule
-          }
-        }
+        convert_custom_config_dict: custom configuration dictionary for convert function:
+                                    user will manually define the corresponding quantized
+                                    module class which has a from_observed class method that converts
+                                    observed custom module to quantized custom module
+                                    convert_custom_config_dict = {
+                                      "observed_to_quantized_custom_module_class": {
+                                        ObservedCustomModule: QuantizedCustomModule
+                                      }
+                                    }
     """
     torch._C._log_api_usage_once("quantization_api.quantize.convert")
     if not inplace:
